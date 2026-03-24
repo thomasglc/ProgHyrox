@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyrox Duo — Plan 19 Semaines</title>
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --orange-dark: #e55a24;
+      --navy: #1a1a2e;
+      --navy-light: #16213e;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --gray-light: #e9ecef;
+      --gray: #6c757d;
+      --text: #2d3748;
+      --green: #10b981;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--light); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav { background: var(--navy); padding: 0.75rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    nav .logo { color: var(--orange); font-weight: 900; font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; flex-shrink: 0; }
+    nav a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; white-space: nowrap; }
+    nav a:hover { color: var(--orange); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #2d1b69 100%); color: white; padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: 'HYROX'; position: absolute; font-size: 18rem; font-weight: 900; color: rgba(255,255,255,0.025); top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none; }
+    .hero h1 { font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 0.5rem; position: relative; }
+    .hero h1 span { color: var(--orange); }
+    .hero .sub { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto 2rem; position: relative; }
+    .hero-stats { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+    .hero-stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 1rem 1.5rem; }
+    .hero-stat .value { font-size: 1.8rem; font-weight: 800; color: var(--orange); line-height: 1; }
+    .hero-stat .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+
+    /* CONTAINER */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 3rem 0; }
+    .section-title { font-size: 1.6rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-title .chip { background: var(--orange); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+    .section-sub { color: var(--gray); margin-bottom: 2rem; font-size: 0.95rem; }
+    .divider { height: 1px; background: var(--gray-light); margin: 0; }
+
+    /* CARDS */
+    .card { background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+    /* PROFILE */
+    .profile-card { background: white; border-radius: 16px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .av-m { background: #dbeafe; }
+    .av-f { background: #fce7f3; }
+    .profile-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+    .semi-time { font-size: 2.2rem; font-weight: 900; color: var(--orange); line-height: 1; margin: 0.5rem 0; }
+    .tag { display: inline-block; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin: 0.2rem 0.15rem; }
+    .tag-g { background: #d1fae5; color: #065f46; }
+    .tag-b { background: #dbeafe; color: #1e40af; }
+    .tag-o { background: #fed7aa; color: #92400e; }
+    .tag-p { background: #ede9fe; color: #5b21b6; }
+    .tag-r { background: #fee2e2; color: #991b1b; }
+
+    /* TARGET */
+    .target-box { background: linear-gradient(135deg, #1a1a2e, #2d1b69); color: white; border-radius: 16px; padding: 2rem; text-align: center; }
+    .target-box .tl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+    .target-time { font-size: 3.5rem; font-weight: 900; color: var(--orange); line-height: 1; }
+    .target-breakdown { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .tb-item .val { font-size: 1.3rem; font-weight: 700; color: var(--orange); }
+    .tb-item .lbl { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+
+    /* PHASES TIMELINE */
+    .phases-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .pb-item { padding: 1.25rem; border-right: 1px solid var(--gray-light); }
+    .pb-item:last-child { border-right: none; }
+    .pb-num { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; }
+    .pb-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+    .pb-dates { font-size: 0.75rem; color: var(--gray); margin-bottom: 0.5rem; }
+    .pb-weeks { font-size: 0.8rem; font-weight: 600; }
+    .pb-bar { height: 5px; border-radius: 3px; margin-top: 0.75rem; }
+
+    /* CALENDAR */
+    .cal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 0.4rem; }
+    .cal-week { background: white; border-radius: 8px; padding: 0.6rem 0.75rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-top: 3px solid transparent; }
+    .cal-week .wn { font-size: 0.65rem; text-transform: uppercase; color: var(--gray); }
+    .cal-week .wd { font-size: 0.75rem; font-weight: 700; color: var(--navy); }
+    .cal-week .wlabel { font-size: 0.65rem; margin-top: 0.2rem; font-weight: 600; }
+
+    /* EXERCISE CARDS */
+    .ex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; }
+    .ex-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-left: 4px solid var(--orange); }
+    .ex-num { font-size: 0.7rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; }
+    .ex-card h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin: 0.2rem 0 0.4rem; }
+    .ex-dist { font-size: 0.8rem; background: var(--light); padding: 0.25rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.5rem; font-weight: 600; }
+    .ex-card p { font-size: 0.82rem; color: var(--gray); margin-bottom: 0.4rem; }
+    .ex-muscles { font-size: 0.78rem; color: #7c3aed; }
+    .ex-alt { font-size: 0.78rem; background: #ede9fe; color: #5b21b6; padding: 0.35rem 0.65rem; border-radius: 6px; margin-top: 0.5rem; display: block; }
+    .ex-weight { font-size: 0.78rem; background: #fed7aa; color: #92400e; padding: 0.35rem 0.65rem; border-radius: 6px; margin-top: 0.35rem; display: block; }
+
+    /* WEEK TABLE */
+    .wtable { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .wtable th { background: var(--navy); color: white; padding: 0.65rem 1rem; text-align: left; font-size: 0.8rem; }
+    .wtable td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--gray-light); font-size: 0.85rem; vertical-align: top; }
+    .wtable tr:last-child td { border-bottom: none; }
+    .wtable tr:hover td { background: #fafafa; }
+    .day { font-weight: 700; color: var(--navy); font-size: 0.8rem; white-space: nowrap; }
+    .st { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 5px; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .st-r { background: #dbeafe; color: #1e40af; }
+    .st-h { background: #fed7aa; color: #92400e; }
+    .st-rest { background: #f3f4f6; color: #6b7280; }
+    .st-brick { background: #d1fae5; color: #065f46; }
+    .st-mob { background: #e0e7ff; color: #3730a3; font-style: italic; }
+
+    /* SESSION DETAIL */
+    .session { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); margin-bottom: 1rem; }
+    .s-header { padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .s-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .si-r { background: #dbeafe; }
+    .si-h { background: #fed7aa; }
+    .si-b { background: #d1fae5; }
+    .s-header h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+    .s-header .smeta { font-size: 0.75rem; color: var(--gray); }
+    .s-body { padding: 0 1.5rem 1.25rem; border-top: 1px solid var(--gray-light); }
+    .s-block { padding: 0.75rem 0; border-bottom: 1px dashed var(--gray-light); }
+    .s-block:last-child { border-bottom: none; }
+    .s-block h5 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); margin-bottom: 0.4rem; }
+    .s-block ul { list-style: none; }
+    .s-block ul li { font-size: 0.85rem; padding: 0.15rem 0 0.15rem 1.2rem; position: relative; }
+    .s-block ul li::before { content: '▸'; position: absolute; left: 0; color: var(--orange); }
+    .s-block p { font-size: 0.85rem; color: var(--text); }
+
+    /* PHASE SECTION */
+    .phase-section { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+    .phase-hd { padding: 1.75rem 2rem; color: white; }
+    .phase-hd .phase-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; margin-bottom: 0.25rem; }
+    .phase-hd h2 { font-size: 1.6rem; font-weight: 900; }
+    .phase-hd .phase-meta { font-size: 0.85rem; opacity: 0.75; margin-top: 0.25rem; }
+    .phase-bd { padding: 1.75rem 2rem; }
+    .phase-goals { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .goal-chip { background: var(--light); border: 1px solid var(--gray-light); padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--navy); }
+
+    /* BOXES */
+    .tip { background: #fff7ed; border-left: 4px solid var(--orange); padding: 0.85rem 1.1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; }
+    .tip strong { color: #92400e; font-size: 0.85rem; display: block; margin-bottom: 0.2rem; }
+    .tip p, .tip ul { font-size: 0.82rem; color: #78350f; }
+    .tip ul { padding-left: 1rem; }
+    .info { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 0.85rem 1.1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; }
+    .info p { font-size: 0.82rem; color: #1e40af; }
+    .success { background: #f0fdf4; border-left: 4px solid var(--green); padding: 0.85rem 1.1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; }
+    .success p { font-size: 0.82rem; color: #065f46; }
+
+    /* ALLURE TABLE */
+    .at { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .at th { background: var(--navy); color: white; padding: 0.55rem 0.85rem; text-align: left; }
+    .at td { padding: 0.55rem 0.85rem; border-bottom: 1px solid var(--gray-light); }
+    .at tr:last-child td { border-bottom: none; }
+    .at tr:nth-child(even) td { background: #fafafa; }
+
+    /* DUO STRATEGY */
+    .duo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .duo-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .duo-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    /* NUTRITION */
+    .nut-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .nut-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem; }
+    .nut-card ul { list-style: none; }
+    .nut-card ul li { font-size: 0.82rem; padding: 0.2rem 0 0.2rem 1.1rem; position: relative; color: var(--text); }
+    .nut-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--orange); font-weight: 900; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; margin-top: 1rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4, .duo-grid { grid-template-columns: 1fr; }
+      .phases-bar { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 1.8rem; }
+      nav { gap: 0.75rem; }
+    }
+
+    /* PRINT */
+    @media print {
+      nav { display: none; }
+      .hero::before { display: none; }
+      .phase-section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">HYROX ×2</span>
+  <a href="#profils">Profils</a>
+  <a href="#exercises">Stations</a>
+  <a href="#charges">Charges</a>
+  <a href="#phase1">Phase 1</a>
+  <a href="#phase2">Phase 2</a>
+  <a href="#phase3">Phase 3</a>
+  <a href="#phase4">Phase 4</a>
+  <a href="#strategie">Stratégie</a>
+  <a href="#nutrition">Nutrition</a>
+  <a href="#race">Semaine J</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Plan de Préparation<br><span>Hyrox Doubles</span></h1>
+  <p class="sub">19 semaines · 5 séances/semaine · Du 18 Mai au 27 Septembre 2026</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="value">19</div><div class="label">Semaines</div></div>
+    <div class="hero-stat"><div class="value">5</div><div class="label">Séances/sem.</div></div>
+    <div class="hero-stat"><div class="value">8</div><div class="label">Stations Hyrox</div></div>
+    <div class="hero-stat"><div class="value">~1h25</div><div class="label">Objectif</div></div>
+    <div class="hero-stat"><div class="value">25-27 Sep</div><div class="label">Race Day</div></div>
+  </div>
+</div>
+
+<!-- PROFILS -->
+<section id="profils">
+  <div class="container">
+    <div class="section-title"><div class="chip">1</div>Votre Profil & Objectifs</div>
+    <p class="section-sub">Analyse de votre niveau pour calibrer la préparation</p>
+
+    <div class="grid-2" style="margin-bottom:1rem;">
+      <div class="profile-card">
+        <div class="avatar av-m">🏃</div>
+        <h3>Lui</h3>
+        <div class="semi-time">1h35</div>
+        <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.75rem;">Semi-marathon · ~4:30 min/km</p>
+        <span class="tag tag-g">✓ Fort en course</span>
+        <span class="tag tag-r">⚡ 0 CrossFit</span>
+        <span class="tag tag-b">Endurance solide</span>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-light);">
+          <p style="font-size:0.82rem;color:var(--gray);">Priorité : maîtriser les 8 mouvements Hyrox et développer la force musculaire spécifique. Le moteur cardio est là — il faut construire le reste.</p>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="avatar av-f">🏃</div>
+        <h3>Elle</h3>
+        <div class="semi-time">2h00</div>
+        <p style="font-size:0.8rem;color:var(--gray);margin-bottom:0.75rem;">Semi-marathon · ~5:40 min/km</p>
+        <span class="tag tag-g">✓ Bases CrossFit</span>
+        <span class="tag tag-g">✓ Mouvements connus</span>
+        <span class="tag tag-o">⚡ Endurance course</span>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-light);">
+          <p style="font-size:0.82rem;color:var(--gray);">Priorité : améliorer l'endurance course et l'enchaînement course → station sous fatigue. Les mouvements Hyrox sont déjà connus — il faut les tenir longtemps.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="target-box">
+        <div class="tl">Objectif de temps</div>
+        <div class="target-time">1h25 – 1h35</div>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:0.5rem;">Pour un duo bien préparé à votre niveau</p>
+        <div class="target-breakdown">
+          <div class="tb-item"><div class="val">~48 min</div><div class="lbl">8 × 1km partagés</div></div>
+          <div class="tb-item"><div class="val">~37-45 min</div><div class="lbl">8 stations (divisées)</div></div>
+          <div class="tb-item"><div class="val">~2-3 min</div><div class="lbl">Transitions</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--navy);font-weight:700;margin-bottom:0.75rem;">📋 Format Hyrox Doubles</h3>
+        <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">En duo, vous <strong>courez ensemble</strong> les 8 × 1km puis <strong>divisez le travail</strong> à chaque station (chaque athlète fait la moitié).</p>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;">
+            <span style="position:absolute;left:0;color:var(--orange);">▸</span>
+            Allure de course dictée par <strong>elle</strong> (le binôme court ensemble)
+          </li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;">
+            <span style="position:absolute;left:0;color:var(--orange);">▸</span>
+            Stations divisées : 500m SkiErg chacun, 50 Wall Balls chacun...
+          </li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;">
+            <span style="position:absolute;left:0;color:var(--orange);">▸</span>
+            Lui a tout le loisir de récupérer pendant ses segments de course
+          </li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;">
+            <span style="position:absolute;left:0;color:var(--orange);">▸</span>
+            Allure cible commune : <strong>5:45 – 6:00 min/km</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CALENDRIER -->
+<section id="calendrier">
+  <div class="container">
+    <div class="section-title"><div class="chip">2</div>Calendrier 19 Semaines</div>
+    <p class="section-sub">Vue d'ensemble de la préparation du 18 Mai au 27 Septembre 2026</p>
+
+    <div class="phases-bar" style="margin-bottom:1.25rem;">
+      <div class="pb-item">
+        <div class="pb-num" style="color:#3b82f6;">Phase 1</div>
+        <h4>Fondation</h4>
+        <div class="pb-dates">18 Mai – 14 Juin</div>
+        <div class="pb-weeks" style="color:#3b82f6;">Semaines 1 – 4</div>
+        <div class="pb-bar" style="background:#3b82f6;"></div>
+      </div>
+      <div class="pb-item">
+        <div class="pb-num" style="color:var(--green);">Phase 2</div>
+        <h4>Construction</h4>
+        <div class="pb-dates">15 Juin – 19 Juil</div>
+        <div class="pb-weeks" style="color:var(--green);">Semaines 5 – 9</div>
+        <div class="pb-bar" style="background:var(--green);"></div>
+      </div>
+      <div class="pb-item">
+        <div class="pb-num" style="color:var(--orange);">Phase 3</div>
+        <h4>Spécificité</h4>
+        <div class="pb-dates">20 Juil – 30 Août</div>
+        <div class="pb-weeks" style="color:var(--orange);">Semaines 10 – 15</div>
+        <div class="pb-bar" style="background:var(--orange);"></div>
+      </div>
+      <div class="pb-item">
+        <div class="pb-num" style="color:var(--purple);">Phase 4</div>
+        <h4>Affûtage / Taper</h4>
+        <div class="pb-dates">31 Août – 27 Sep</div>
+        <div class="pb-weeks" style="color:var(--purple);">Semaines 16 – 19</div>
+        <div class="pb-bar" style="background:var(--purple);"></div>
+      </div>
+    </div>
+
+    <div class="cal-grid">
+      <!-- Phase 1 -->
+      <div class="cal-week" style="border-top-color:#3b82f6;"><div class="wn">Sem. 1</div><div class="wd">18 – 24 Mai</div><div class="wlabel" style="color:#3b82f6;">Fondation</div></div>
+      <div class="cal-week" style="border-top-color:#3b82f6;"><div class="wn">Sem. 2</div><div class="wd">25 – 31 Mai</div><div class="wlabel" style="color:#3b82f6;">Fondation</div></div>
+      <div class="cal-week" style="border-top-color:#3b82f6;"><div class="wn">Sem. 3</div><div class="wd">1 – 7 Juin</div><div class="wlabel" style="color:#3b82f6;">Fondation</div></div>
+      <div class="cal-week" style="border-top-color:#3b82f6;"><div class="wn">Sem. 4</div><div class="wd">8 – 14 Juin</div><div class="wlabel" style="color:#3b82f6;">Fondation</div></div>
+      <!-- Phase 2 -->
+      <div class="cal-week" style="border-top-color:var(--green);"><div class="wn">Sem. 5</div><div class="wd">15 – 21 Juin</div><div class="wlabel" style="color:var(--green);">Construction</div></div>
+      <div class="cal-week" style="border-top-color:var(--green);"><div class="wn">Sem. 6</div><div class="wd">22 – 28 Juin</div><div class="wlabel" style="color:var(--green);">Construction</div></div>
+      <div class="cal-week" style="border-top-color:var(--green);"><div class="wn">Sem. 7</div><div class="wd">29 Juin – 5 Juil</div><div class="wlabel" style="color:var(--green);">Construction</div></div>
+      <div class="cal-week" style="border-top-color:var(--green);"><div class="wn">Sem. 8</div><div class="wd">6 – 12 Juil</div><div class="wlabel" style="color:var(--green);">Construction</div></div>
+      <div class="cal-week" style="border-top-color:var(--green);"><div class="wn">Sem. 9</div><div class="wd">13 – 19 Juil</div><div class="wlabel" style="color:var(--green);">Construction</div></div>
+      <!-- Phase 3 -->
+      <div class="cal-week" style="border-top-color:var(--orange);"><div class="wn">Sem. 10</div><div class="wd">20 – 26 Juil</div><div class="wlabel" style="color:var(--orange);">Spécificité</div></div>
+      <div class="cal-week" style="border-top-color:var(--orange);"><div class="wn">Sem. 11</div><div class="wd">27 Juil – 2 Août</div><div class="wlabel" style="color:var(--orange);">Spécificité</div></div>
+      <div class="cal-week" style="border-top-color:var(--orange);"><div class="wn">Sem. 12</div><div class="wd">3 – 9 Août</div><div class="wlabel" style="color:var(--orange);">Spécificité</div></div>
+      <div class="cal-week" style="border-top-color:var(--orange);"><div class="wn">Sem. 13</div><div class="wd">10 – 16 Août</div><div class="wlabel" style="color:var(--orange);">Spécificité</div></div>
+      <div class="cal-week" style="border-top-color:var(--orange);"><div class="wn">Sem. 14</div><div class="wd">17 – 23 Août</div><div class="wlabel" style="color:var(--orange);">Spécificité</div></div>
+      <div class="cal-week" style="border-top-color:var(--orange);"><div class="wn">Sem. 15</div><div class="wd">24 – 30 Août</div><div class="wlabel" style="color:var(--orange);">Spécificité</div></div>
+      <!-- Phase 4 -->
+      <div class="cal-week" style="border-top-color:var(--purple);"><div class="wn">Sem. 16</div><div class="wd">31 Août – 6 Sep</div><div class="wlabel" style="color:var(--purple);">Affûtage</div></div>
+      <div class="cal-week" style="border-top-color:var(--purple);"><div class="wn">Sem. 17</div><div class="wd">7 – 13 Sep</div><div class="wlabel" style="color:var(--purple);">Affûtage</div></div>
+      <div class="cal-week" style="border-top-color:var(--purple);"><div class="wn">Sem. 18</div><div class="wd">14 – 20 Sep</div><div class="wlabel" style="color:var(--purple);">Taper</div></div>
+      <div class="cal-week" style="border-top-color:#ef4444;background:#fff5f5;"><div class="wn">Sem. 19</div><div class="wd">21 – 27 Sep</div><div class="wlabel" style="color:#ef4444;">🏁 RACE WEEK</div></div>
+    </div>
+
+    <div class="info" style="margin-top:1rem;">
+      <p><strong>Structure hebdomadaire type :</strong> Mardi (Course qualitative) · Mercredi (Hyrox Séance A) · Jeudi (Course facile) · Samedi (Session longue ou Brick) · Dimanche (Hyrox Séance B) — Lundi, Vendredi = repos / récup active</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ALLURES DE REFERENCE -->
+<section>
+  <div class="container">
+    <div class="section-title"><div class="chip">3</div>Allures de Référence</div>
+    <p class="section-sub">Vos zones de course pour tout le plan — à courir ensemble sur les séances communes</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color:var(--navy);font-weight:700;margin-bottom:0.75rem;">🏃 Lui — Zones d'entraînement</h3>
+        <table class="at">
+          <tr><th>Zone</th><th>Description</th><th>Allure / km</th></tr>
+          <tr><td><strong>Z1</strong></td><td>Footing récup</td><td>5:30 – 6:00</td></tr>
+          <tr><td><strong>Z2</strong></td><td>Footing facile</td><td>5:00 – 5:30</td></tr>
+          <tr><td><strong>Z3</strong></td><td>Tempo confort</td><td>4:30 – 4:50</td></tr>
+          <tr><td><strong>Z4</strong></td><td>Seuil / tempo dur</td><td>4:10 – 4:30</td></tr>
+          <tr><td><strong>Z5</strong></td><td>VO2max / fractionné</td><td>3:55 – 4:10</td></tr>
+        </table>
+        <div class="info" style="margin-top:0.75rem;"><p>Pour les séances <strong>communes</strong> avec elle, tu cours à sa zone — ça devient une séance de récupération active pour toi. Tes séances solo peuvent être plus intenses.</p></div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--navy);font-weight:700;margin-bottom:0.75rem;">🏃 Elle — Zones d'entraînement</h3>
+        <table class="at">
+          <tr><th>Zone</th><th>Description</th><th>Allure / km</th></tr>
+          <tr><td><strong>Z1</strong></td><td>Footing récup</td><td>6:45 – 7:30</td></tr>
+          <tr><td><strong>Z2</strong></td><td>Footing facile</td><td>6:15 – 6:45</td></tr>
+          <tr><td><strong>Z3</strong></td><td>Tempo confort</td><td>5:35 – 5:55</td></tr>
+          <tr><td><strong>Z4</strong></td><td>Seuil / tempo dur</td><td>5:15 – 5:35</td></tr>
+          <tr><td><strong>Z5</strong></td><td>VO2max / fractionné</td><td>4:55 – 5:15</td></tr>
+        </table>
+        <div class="info" style="margin-top:0.75rem;"><p>L'allure de <strong>course le jour J</strong> sera ~5:45 – 6:00 /km. Les séances tempo doivent progressivement s'approcher de cette allure cible.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SÉANCE MOBILITÉ -->
+<section>
+  <div class="container">
+    <div class="section-title"><div class="chip" style="background:#3730a3;">★</div>Séance Mobilité — Facultative (~30 min)</div>
+    <p class="section-sub">À placer le lundi (jour de repos) — totalement optionnelle mais fortement recommandée pour prévenir les blessures</p>
+    <div class="grid-3">
+      <div class="card">
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:0.75rem;">🦵 Bas du Corps (10 min)</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Hip flexor stretch (fente basse) : 2 × 45s chaque côté</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Étirement pigeon (fessier/hanche) : 2 × 45s chaque côté</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Étirement ischio-jambiers debout : 2 × 30s chaque côté</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Mobilité cheville (cercles + squat profond) : 2 × 30s</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:0.75rem;">💪 Haut du Corps (10 min)</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Étirement épaules (cross-body + derrière la tête) : 2 × 30s chaque</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Ouverture thoracique (rotation colonne) : 10 reps chaque côté</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Étirement poitrail (porte ou mur) : 2 × 30s</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Mobilité poignets + avant-bras (Farmers Carry) : 2 × 20s</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:0.75rem;">🔄 Rouleau de Massage (10 min)</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Quadriceps : 60s chaque jambe (lent, points de tension)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Mollets + plante des pieds : 45s chaque</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Dorsaux + thoracique : 60s</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#3730a3;">▸</span>Fessiers (rouleau ou balle de tennis) : 45s chaque côté</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info" style="margin-top:1rem;">
+      <p><strong>Quand la faire ?</strong> Le lundi de préférence. Peut aussi se faire le vendredi soir après une journée chargée, ou après n'importe quelle séance intense si vous avez 30 min. <strong>Ne jamais la faire si vous êtes trop fatigué</strong> — le repos complet prime toujours.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LES 8 STATIONS -->
+<section id="exercises">
+  <div class="container">
+    <div class="section-title"><div class="chip">4</div>Les 8 Stations Hyrox</div>
+    <p class="section-sub">Format Doubles : chaque athlète effectue la moitié du travail à chaque station. Poids indicatifs catégorie Open.</p>
+    <div class="ex-grid">
+
+      <div class="ex-card">
+        <div class="ex-num">Station 1</div>
+        <h4>SkiErg</h4>
+        <span class="ex-dist">500m chacun (1000m total)</span>
+        <p>Tirage vertical bras tendus, simulant le ski nordique. Excellent cardio + épaules + abdos.</p>
+        <p class="ex-muscles">💪 Dorsaux, épaules, abdos, cardio</p>
+        <span class="ex-alt">Alternative sans machine : Tirages poulie haute, bandes élastiques overhead</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 2</div>
+        <h4>Sled Push</h4>
+        <span class="ex-dist">2 × 25m chacun (4 × 25m total)</span>
+        <p>Poussée d'un traîneau lesté en position basse. Intense sur les quadriceps et le cardio.</p>
+        <p class="ex-muscles">💪 Quadriceps, fessiers, épaules, gainage</p>
+        <span class="ex-weight">Open Mixte : 152kg (sled inclus) — même poids pour les deux</span>
+        <span class="ex-alt">Alternative : Squat lesté lourd, Leg press, Prowler</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 3</div>
+        <h4>Sled Pull</h4>
+        <span class="ex-dist">2 × 25m chacun (4 × 25m total)</span>
+        <p>Tirage d'un traîneau vers soi à l'aide d'une corde, en position accroupie. Très intense sur la chaîne postérieure.</p>
+        <p class="ex-muscles">💪 Ischio-jambiers, fessiers, dorsaux, biceps</p>
+        <span class="ex-weight">Open Mixte : 103kg (sled inclus) — même poids pour les deux</span>
+        <span class="ex-alt">Alternative : Tirage corde, Romanian deadlift, hip thrust</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 4</div>
+        <h4>Burpee Broad Jumps</h4>
+        <span class="ex-dist">40m chacun (80m total)</span>
+        <p>Burpee classique suivi d'un saut en longueur maximum. Enchaîner le plus vite possible sans marquer de pause.</p>
+        <p class="ex-muscles">💪 Full body, cardio intense, explosivité</p>
+        <span class="ex-alt">Alternative : Burpees + Box jump, ou burpees seuls si pas d'espace</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 5</div>
+        <h4>RowErg</h4>
+        <span class="ex-dist">500m chacun (1000m total)</span>
+        <p>Rameur classique (Concept2). L'une des stations les plus "équitables" — pace régulier et technique propre.</p>
+        <p class="ex-muscles">💪 Dorsaux, ischio, quadriceps, cardio</p>
+        <span class="ex-alt">Alternative : Rameur autre marque, tirage horizontal câble</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 6</div>
+        <h4>Farmers Carry</h4>
+        <span class="ex-dist">100m chacun (200m total)</span>
+        <p>Porter deux kettlebells ou haltères lourds sur 100m. Simple en apparence, très exigeant sur la grip et la posture.</p>
+        <p class="ex-muscles">💪 Trapèzes, avant-bras, gainage, épaules</p>
+        <span class="ex-weight">Open Mixte : 2×24kg chacun — charges séparées (elle et lui)</span>
+        <span class="ex-alt">Alternative : Marche avec haltères lourds, valises pleines</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 7</div>
+        <h4>Sandbag Lunges</h4>
+        <span class="ex-dist">50m chacun (100m total)</span>
+        <p>Fentes avant continues sur 50m avec un sac de sable posé sur les épaules. Jambes en feu après les runs.</p>
+        <p class="ex-muscles">💪 Quadriceps, fessiers, équilibre, gainage</p>
+        <span class="ex-weight">Open Mixte : 20kg — même sac pour les deux</span>
+        <span class="ex-alt">Alternative : Fentes avec haltères, goblet lunge (dumbbell devant)</span>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">Station 8</div>
+        <h4>Wall Balls</h4>
+        <span class="ex-dist">50 répétitions chacun (100 total)</span>
+        <p>Squat profond + lancer d'un medball sur une cible murale. La station finale — souvent la plus dure mentalement.</p>
+        <p class="ex-muscles">💪 Quadriceps, fessiers, épaules, cardio</p>
+        <span class="ex-weight">Open Mixte : 6kg · cible 3m — même medball pour les deux</span>
+        <span class="ex-alt">Alternative : Goblet squat + press overhead avec haltère</span>
+      </div>
+
+    </div>
+
+    <div class="tip" style="margin-top:1.5rem;">
+      <strong>💡 Accès aux équipements</strong>
+      <p>Idéalement, rejoindre une salle avec <strong>SkiErg, RowErg, sled, kettlebells et medball</strong>. La plupart des box CrossFit ont tout ça. Si vous n'avez pas accès à un sled, utilisez les alternatives indiquées — les muscles travaillés restent les mêmes. Prévoir au moins 2-3 séances en conditions réelles dans les 6 semaines avant la course.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CHARGES & PROGRESSIVITÉ -->
+<section id="charges">
+  <div class="container">
+    <div class="section-title"><div class="chip">5</div>Charges & Progressivité par Phase</div>
+    <p class="section-sub">Catégorie <strong>Open Mixte</strong> · Poids de course officiels confirmés · Progressivité semaine par semaine</p>
+
+    <div class="tip" style="margin-bottom:1.5rem;">
+      <strong>⚠️ Open Mixte = Poids Hommes pour tout le monde</strong>
+      <p>En Doubles Open Mixte, <strong>tous les équipements partagés utilisent les poids hommes</strong> : Sled Push 152kg, Sled Pull 103kg, Sandbag 20kg, Wall Balls 6kg/3m. Farmers Carry uniquement : 2×24kg chacun (les charges sont séparées). C'est le principal défi pour elle — la progression sur le sled est la priorité absolue dès la Phase 1.</p>
+    </div>
+
+    <!-- TABLEAU POIDS RACE -->
+    <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Poids Cible le Jour de la Course</h4>
+    <table class="at" style="margin-bottom:2rem;">
+      <tr>
+        <th>Station</th>
+        <th>Volume (par personne)</th>
+        <th>Elle — Open Mixte</th>
+        <th>Lui — Open Mixte</th>
+        <th>Équipement partagé ?</th>
+      </tr>
+      <tr><td><strong>SkiErg</strong></td><td>500m</td><td colspan="2" style="text-align:center;">Pas de poids — effort et rythme</td><td>Non (machine séparée)</td></tr>
+      <tr><td><strong>Sled Push</strong></td><td>2 × 25m</td><td>152 kg (sled incl.)</td><td>152 kg (sled incl.)</td><td>Oui — même sled</td></tr>
+      <tr><td><strong>Sled Pull</strong></td><td>2 × 25m</td><td>103 kg (sled incl.)</td><td>103 kg (sled incl.)</td><td>Oui — même sled</td></tr>
+      <tr><td><strong>Burpee Broad Jumps</strong></td><td>40m</td><td colspan="2" style="text-align:center;">Pas de poids — technique et régularité</td><td>—</td></tr>
+      <tr><td><strong>RowErg</strong></td><td>500m</td><td colspan="2" style="text-align:center;">Pas de poids — effort et rythme</td><td>Non (machine séparée)</td></tr>
+      <tr><td><strong>Farmers Carry</strong></td><td>100m</td><td><strong>2 × 24 kg</strong></td><td><strong>2 × 24 kg</strong></td><td>Non — charges séparées</td></tr>
+      <tr><td><strong>Sandbag Lunges</strong></td><td>100m</td><td><strong>20 kg</strong></td><td><strong>20 kg</strong> (standard mixte)</td><td>Oui — même sac</td></tr>
+      <tr><td><strong>Wall Balls</strong></td><td>50 reps</td><td><strong>6 kg</strong> (cible 3m)</td><td><strong>6 kg</strong> (cible 3m)</td><td>Oui — même medball</td></tr>
+    </table>
+
+    <!-- PROGRESSION ELLE -->
+    <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Progression des Charges — <span style="color:#db2777;">Elle</span></h4>
+    <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Objectif : arriver aux poids de course dès la Phase 3. Ne jamais sacrifier la technique pour augmenter la charge.</p>
+    <div style="overflow-x:auto;margin-bottom:1.5rem;">
+    <table class="at" style="min-width:650px;">
+      <tr>
+        <th>Station</th>
+        <th style="background:#1e40af;">Phase 1<br><small style="font-weight:400;">S1–S4</small></th>
+        <th style="background:#065f46;">Phase 2<br><small style="font-weight:400;">S5–S9</small></th>
+        <th style="background:#92400e;">Phase 3<br><small style="font-weight:400;">S10–S15</small></th>
+        <th style="background:#4c1d95;">Phase 4<br><small style="font-weight:400;">S16–S19</small></th>
+        <th>Poids race</th>
+      </tr>
+      <tr>
+        <td><strong>Sled Push</strong></td>
+        <td>75–90 kg<br><small style="color:var(--gray);">Focus technique — position basse, pas de raideur dos</small></td>
+        <td>S5–S6 : 100 kg<br>S7–S8 : 115–125 kg<br>S9 : 105 kg (décharge)</td>
+        <td>S10–S11 : 128–135 kg<br>S12–S13 : 140–148 kg<br>S14–S15 : <strong>152 kg</strong></td>
+        <td>152 kg en simulation<br>Maintien, pas d'augmentation</td>
+        <td><strong>152 kg</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Sled Pull</strong></td>
+        <td>50–65 kg<br><small style="color:var(--gray);">Position accroupie basse, tirer avec les jambes + dos</small></td>
+        <td>S5–S6 : 72 kg<br>S7–S8 : 85–90 kg<br>S9 : 78 kg (décharge)</td>
+        <td>S10–S11 : 92 kg<br>S12–S13 : 97–100 kg<br>S14–S15 : <strong>103 kg</strong></td>
+        <td>103 kg<br>Maintien</td>
+        <td><strong>103 kg</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Farmers Carry</strong></td>
+        <td>2 × 12 kg<br><small style="color:var(--gray);">Dos droit, épaules en arrière, pas de balancement</small></td>
+        <td>S5–S6 : 2 × 14 kg<br>S7–S8 : 2 × 18–20 kg<br>S9 : 2 × 14 kg</td>
+        <td>S10–S12 : 2 × 20 kg<br>S13–S15 : <strong>2 × 24 kg</strong></td>
+        <td>2 × 24 kg<br>Maintien</td>
+        <td><strong>2 × 24 kg</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Sandbag Lunges</strong></td>
+        <td>8 kg<br><small style="color:var(--gray);">Sac sur les épaules (trapèzes), genou avant à 90°</small></td>
+        <td>S5–S6 : 10 kg<br>S7–S8 : 14–16 kg<br>S9 : 10 kg</td>
+        <td>S10–S11 : 16–18 kg<br>S12–S15 : <strong>20 kg</strong></td>
+        <td>20 kg<br>Maintien</td>
+        <td><strong>20 kg</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Wall Balls</strong></td>
+        <td>4–6 kg (cible 3m)<br><small style="color:var(--gray);">Bases CrossFit — monter à 6 kg dès S2-S3, focus squat profond</small></td>
+        <td>6 kg / cible 3m — poids race dès Phase 2<br>Focus endurance : séries de 20–30 reps</td>
+        <td>6 kg race weight<br>Objectif : 50 reps non-stop en fin de phase</td>
+        <td>6 kg exclusivement</td>
+        <td><strong>6 kg</strong> / cible 3m</td>
+      </tr>
+      <tr>
+        <td><strong>SkiErg</strong></td>
+        <td>Allure très confort<br><small style="color:var(--gray);">~2:30–3:00/500m · Technique avant tout</small></td>
+        <td>~2:15–2:30/500m<br>Montée progressive</td>
+        <td>~2:00–2:15/500m<br>S13+ : tester allure race</td>
+        <td>Allure race stabilisée</td>
+        <td><strong>~2:00–2:10/500m</strong></td>
+      </tr>
+      <tr>
+        <td><strong>RowErg</strong></td>
+        <td>Allure très confort<br><small style="color:var(--gray);">~2:30–2:45/500m · Jambes → dos → bras</small></td>
+        <td>~2:20–2:30/500m</td>
+        <td>~2:10–2:20/500m<br>S13+ : tester allure race</td>
+        <td>Allure race stabilisée</td>
+        <td><strong>~2:10–2:20/500m</strong></td>
+      </tr>
+    </table>
+    </div>
+
+    <!-- PROGRESSION LUI -->
+    <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Progression des Charges — <span style="color:#1e40af;">Lui</span></h4>
+    <p style="font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem;">Déjà à l'aise en cardio — priorité sur la maîtrise technique des mouvements Hyrox dès la Phase 1.</p>
+    <div style="overflow-x:auto;margin-bottom:1.5rem;">
+    <table class="at" style="min-width:650px;">
+      <tr>
+        <th>Station</th>
+        <th style="background:#1e40af;">Phase 1<br><small style="font-weight:400;">S1–S4</small></th>
+        <th style="background:#065f46;">Phase 2<br><small style="font-weight:400;">S5–S9</small></th>
+        <th style="background:#92400e;">Phase 3<br><small style="font-weight:400;">S10–S15</small></th>
+        <th style="background:#4c1d95;">Phase 4<br><small style="font-weight:400;">S16–S19</small></th>
+        <th>Poids race</th>
+      </tr>
+      <tr>
+        <td><strong>Sled Push</strong><br><small style="color:var(--gray);">(même sled qu'elle)</small></td>
+        <td>80–100 kg<br><small style="color:var(--gray);">Même sled qu'elle en Phase 1, focus technique identique</small></td>
+        <td>S5–S6 : 110 kg<br>S7–S8 : 128–138 kg<br>S9 : 115 kg</td>
+        <td>S10–S12 : 138–148 kg<br>S13–S15 : <strong>152 kg</strong></td>
+        <td>152 kg<br>Maintien</td>
+        <td><strong>152 kg</strong><br>(poids mixte partagé)</td>
+      </tr>
+      <tr>
+        <td><strong>Farmers Carry</strong></td>
+        <td>2 × 14–16 kg<br><small style="color:var(--gray);">Commence plus lourd, bases musculaires à construire</small></td>
+        <td>S5–S6 : 2 × 18 kg<br>S7–S8 : 2 × 20–22 kg<br>S9 : 2 × 18 kg</td>
+        <td>S10–S12 : 2 × 22 kg<br>S13–S15 : <strong>2 × 24 kg</strong></td>
+        <td>2 × 24 kg<br>Maintien</td>
+        <td><strong>2 × 24 kg</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Sandbag Lunges</strong></td>
+        <td>14 kg<br><small style="color:var(--gray);">Commence proche du poids race — technique cruciale dès le départ</small></td>
+        <td>S5–S7 : 18 kg<br>S8 : tester 20 kg en entraînement</td>
+        <td>20 kg race weight<br>Séries à 22–25 kg pour adaptation</td>
+        <td>20 kg exclusivement</td>
+        <td><strong>20 kg</strong> (poids mixte)</td>
+      </tr>
+      <tr>
+        <td><strong>Wall Balls</strong></td>
+        <td>6 kg (cible 3m)<br><small style="color:var(--gray);">Poids race dès le début — attention à la cible à 3m</small></td>
+        <td>6 kg, parfois 8 kg sur quelques séries</td>
+        <td>6 kg race weight<br>+ quelques séries à 8 kg</td>
+        <td>6 kg exclusivement</td>
+        <td><strong>6 kg</strong> / cible 3m</td>
+      </tr>
+    </table>
+    </div>
+
+    <!-- RÈGLES DE PROGRESSION -->
+    <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Règles de Progression</h4>
+    <div class="grid-2">
+      <div class="card">
+        <h4 style="font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">✅ Quand monter en charge</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--green);">▸</span>Vous avez complété le volume cible <strong>2 semaines de suite</strong> sans fatigue excessive</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--green);">▸</span>La technique est <strong>propre à la charge actuelle</strong> (pas de compensation posturale)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--green);">▸</span>Pas de douleur articulaire (genoux, dos, épaules) ni de courbatures importantes le lendemain</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--green);">▸</span>Incrément recommandé : <strong>+5 kg sled · +2 kg sac/kettlebell</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">⛔ Quand ne pas monter</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#ef4444;">▸</span>En semaine de <strong>décharge</strong> (S4, S9, S15) — conserver la charge habituelle</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#ef4444;">▸</span>Si la technique se dégrade sous la fatigue (dos qui arrondit, genoux qui rentrent)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#ef4444;">▸</span>En <strong>Phase 4</strong> — aucune augmentation, stabiliser uniquement</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:#ef4444;">▸</span>Si une séance Hyrox suit une séance de course chargée (mardi/mercredi)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="success" style="margin-top:1rem;">
+      <p><strong>Pour elle — priorité absolue :</strong> Le Sled Push (152 kg) et le Sled Pull (103 kg) sont les deux stations les plus difficiles — ne pas brûler les étapes. Mieux vaut arriver au poids race en S13 avec une bonne technique qu'en S11 avec une mauvaise. Le Sandbag (20 kg) et les Farmers Carry (2×24 kg) demandent aussi une progression sérieuse. Les Wall Balls (6 kg) sont dans ses cordes CrossFit — focus sur l'endurance (50 reps non-stop).</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 1 -->
+<section id="phase1">
+  <div class="container">
+    <div class="section-title"><div class="chip">6</div>Phase 1 — Fondation</div>
+    <p class="section-sub">Semaines 1 – 4 · 18 Mai – 14 Juin</p>
+
+    <div class="phase-section">
+      <div class="phase-hd" style="background: linear-gradient(135deg, #1e40af, #3b82f6);">
+        <div>
+          <div class="phase-label">Phase 1 / 4</div>
+          <h2>Fondation</h2>
+          <div class="phase-meta">4 semaines · 18 Mai – 14 Juin · Volume : faible à modéré</div>
+        </div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-goals">
+          <span class="goal-chip">🎯 Maîtriser les 8 mouvements</span>
+          <span class="goal-chip">🎯 Construire la base cardio</span>
+          <span class="goal-chip">🎯 Habituer le corps aux séances Hyrox</span>
+          <span class="goal-chip">🎯 Aucune blessure</span>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Structure Hebdomadaire Type</h4>
+        <table class="wtable" style="margin-bottom:1.25rem;">
+          <tr>
+            <th>Jour</th><th>Type</th><th>Contenu</th><th>Durée</th>
+          </tr>
+          <tr>
+            <td><span class="day">Lundi</span></td>
+            <td><span class="st st-rest">Repos</span></td>
+            <td>Repos complet · <span style="color:#3730a3;font-style:italic;">Optionnel : séance mobilité/étirements 30 min</span></td>
+            <td>— / ~30 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Mardi</span></td>
+            <td><span class="st st-r">Course A</span></td>
+            <td>Footing facile + 4 × 3min tempo (lui 4:40/km · elle 5:45/km) — récup 2min</td>
+            <td>45 – 55 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Mercredi</span></td>
+            <td><span class="st st-h">Hyrox A</span></td>
+            <td>Initiation technique des 8 mouvements — charges légères, focus forme</td>
+            <td>55 – 70 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Jeudi</span></td>
+            <td><span class="st st-r">Course B</span></td>
+            <td>Footing facile ensemble — lui 5:10–5:25/km · elle 6:20–6:40/km</td>
+            <td>40 – 50 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Vendredi</span></td>
+            <td><span class="st st-rest">Repos</span></td>
+            <td>Repos complet</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="day">Samedi</span></td>
+            <td><span class="st st-r">Course C</span></td>
+            <td>Sortie longue ensemble à 5:50–6:10/km — conversation possible</td>
+            <td>60 – 75 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Dimanche</span></td>
+            <td><span class="st st-h">Hyrox B</span></td>
+            <td>Renforcement musculaire général + circuits légers Hyrox</td>
+            <td>50 – 60 min</td>
+          </tr>
+        </table>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Détail des Séances Hyrox — Phase 1</h4>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-h">🏋️</div>
+            <div><h4>Hyrox A — Initiation Technique</h4><div class="smeta">Mercredi · 55-70 min · Priorité : technique parfaite, charges légères</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Échauffement (10 min)</h5>
+              <ul>
+                <li>5 min cardio léger (rameur ou jogging)</li>
+                <li>Mobilité épaules, hanches, chevilles (5 min)</li>
+                <li>10 hip swings, 10 squats air, 10 rotations thoraciques</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Circuit Technique — 3 passages (repos 2 min entre)</h5>
+              <ul>
+                <li>SkiErg : 150m (focus : plein amplitude bras, gainage actif)</li>
+                <li>Rameur : 200m (focus : jambes → bascule dos → bras)</li>
+                <li>Farmers Carry : 2 × 30m (charges légères : 2×14 kg F / 2×20 kg H)</li>
+                <li>Sandbag Lunges : 20m (sac léger : 8 kg F / 12 kg H)</li>
+                <li>Wall Balls : 10 reps (focus : squat profond, lancer fluide)</li>
+                <li>Burpee Broad Jump : 5 sauts (focus : atterrissage souple)</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Renforcement Complémentaire (15 min)</h5>
+              <ul>
+                <li>3 × 10 Romanian Deadlift (léger, focus gainage)</li>
+                <li>3 × 12 Goblet Squat</li>
+                <li>2 × 30s planche</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Retour au calme (5 min)</h5>
+              <ul><li>Étirements statiques ischio-jambiers, épaules, quadriceps</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-h">🏋️</div>
+            <div><h4>Hyrox B — Renforcement Spécifique</h4><div class="smeta">Dimanche · 50-60 min · Force de base pour les stations</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Échauffement (8 min)</h5>
+              <ul>
+                <li>5 min rameur Z1</li>
+                <li>10 squats, 10 hip hinge, 10 face pull élastique</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Bloc Force — 4 séries (repos 90s)</h5>
+              <ul>
+                <li>Box Squat ou Goblet Squat : 4 × 10 (charges progressives)</li>
+                <li>Hip Thrust : 4 × 12 (simule la poussée sled)</li>
+                <li>Tirage horizontal ou rowing : 4 × 10 (simule sled pull)</li>
+                <li>Overhead Press léger : 3 × 12 (prépare les épaules pour SkiErg)</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Finisher — 2 tours légers</h5>
+              <ul>
+                <li>SkiErg 200m + 10 Wall Balls + Farmers Carry 30m</li>
+                <li>Repos 3 min entre tours</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin:1.5rem 0 0.75rem;">Semaine par Semaine — Phase 1</h4>
+        <div class="grid-2" style="margin-bottom:1.25rem;">
+
+          <div class="card" style="border-top:3px solid #3b82f6;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#3b82f6;margin-bottom:0.25rem;">Semaine 1 · 18–24 Mai</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Découverte & Apprentissage</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges 50% · Aucun chrono · Forme parfaite sur chaque mouvement</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Footing 40 min (lui ~5:10/km · elle ~6:20/km) + 2 × 3 min tempo (lui 4:40/km · elle 5:45/km) récup 2 min</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>2 passages, charges 50%, focus forme — aucun effort</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing facile 35 min — lui 5:10–5:25/km · elle 6:20–6:40/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-r">Course C</span></td><td>Sortie longue ensemble : 55 min à 5:50–6:10/km, conversation possible</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Charges légères, 2 tours finisher (SkiErg 200m + 10 WB + Carry 30m)</td></tr>
+            </table>
+            <div class="success" style="margin-top:0.5rem;"><p>Volume ~4h · Objectif : finir sans douleur articulaire, identifier les mouvements à travailler</p></div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #3b82f6;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#3b82f6;margin-bottom:0.25rem;">Semaine 2 · 25–31 Mai</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Consolidation Technique</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges +5–10% si S1 correcte · Commencer à enchaîner 2 stations</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Footing 40 min + 3 × 3 min tempo (lui 4:40/km · elle 5:45/km) récup 2 min</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>3 passages, charges 55–60%, enchaîner SkiErg → RowErg sans pause</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing facile 40 min — lui 5:10–5:25/km · elle 6:20–6:40/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-r">Course C</span></td><td>Sortie longue ensemble : 60 min à 5:50–6:10/km</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Charges +5%, 3 tours finisher (SkiErg 200m + 10 WB + Carry 30m)</td></tr>
+            </table>
+            <div class="success" style="margin-top:0.5rem;"><p>Volume ~4h30 · Augmenter charges seulement si technique propre sur S1</p></div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #3b82f6;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#3b82f6;margin-bottom:0.25rem;">Semaine 3 · 1–7 Juin</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Montée en Charge</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges 60–65% · Enchaîner 3 stations d'affilée · Semaine de charge — bien récupérer</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Footing 40 min + 4 × 3 min tempo (lui 4:40/km · elle 5:45/km) récup 2 min</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>3 passages, charges 60–65%, enchaîner 3 stations sans pause (SkiErg + Row + Carry)</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing facile 40 min — lui 5:10–5:25/km · elle 6:20–6:40/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-r">Course C</span></td><td>Sortie ensemble : 65 min à 5:50–6:00/km — 10 dernières min à 5:45/km</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Bloc force lourd + 3 tours finisher</td></tr>
+            </table>
+            <div class="tip" style="margin-top:0.5rem;"><strong style="font-size:0.78rem;">Semaine de charge</strong><p>Dormir 8h, manger plus de glucides les jours d'entraînement</p></div>
+          </div>
+
+          <div class="card" style="border-top:3px solid #3b82f6; background:#f0fdf4;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#3b82f6;margin-bottom:0.25rem;">Semaine 4 · 8–14 Juin · Décharge</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Mini-Test & Repos</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Volume –20% · Mini-test mercredi · Corps frais pour attaquer la Phase 2</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Footing 35 min + 3 × 3 min tempo (lui 4:40/km · elle 5:45/km) — volume réduit</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td><strong>Mini-test</strong> — 4 stations aux poids habituels + 2 × 1km courus, noter le temps total</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 35 min — lui 5:20–5:40/km · elle 6:30–6:50/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-r">Course C</span></td><td>Sortie légère ensemble : 50 min à 5:50–6:10/km, aucun effort</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Léger : technique + mobilité, charges –20%</td></tr>
+            </table>
+            <div class="info" style="margin-top:0.5rem;"><p>Garder le chrono du mini-test — c'est votre référence de départ pour mesurer les progrès</p></div>
+          </div>
+
+        </div>
+        <div class="info"><p><strong>Pour Lui :</strong> Ne te précipite pas sur les charges. La technique sur les mouvements Hyrox protège de 90% des blessures. Ces 4 semaines sont ta base — l'intensité vient après.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 2 -->
+<section id="phase2">
+  <div class="container">
+    <div class="section-title"><div class="chip">7</div>Phase 2 — Construction</div>
+    <p class="section-sub">Semaines 5 – 9 · 15 Juin – 19 Juillet</p>
+
+    <div class="phase-section">
+      <div class="phase-hd" style="background: linear-gradient(135deg, #065f46, #10b981);">
+        <div>
+          <div class="phase-label">Phase 2 / 4</div>
+          <h2>Construction</h2>
+          <div class="phase-meta">5 semaines · 15 Juin – 19 Juillet · Volume modéré / Intensité croissante</div>
+        </div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-goals">
+          <span class="goal-chip">🎯 Augmenter l'intensité Hyrox</span>
+          <span class="goal-chip">🎯 Travail sous fatigue</span>
+          <span class="goal-chip">🎯 Améliorer seuil lactique</span>
+          <span class="goal-chip">🎯 Premiers enchaînements course + station</span>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Structure Hebdomadaire Type</h4>
+        <table class="wtable" style="margin-bottom:1.25rem;">
+          <tr><th>Jour</th><th>Type</th><th>Contenu</th><th>Durée</th></tr>
+          <tr>
+            <td><span class="day">Lundi</span></td>
+            <td><span class="st st-rest">Repos</span></td>
+            <td>Repos complet · <span style="color:#3730a3;font-style:italic;">Optionnel : séance mobilité/étirements 30 min</span></td>
+            <td>— / ~30 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Mardi</span></td>
+            <td><span class="st st-r">Course A</span></td>
+            <td>Intervalles : 4×1km (S5) → 5×1km (S6) → 6×1km (S7) → 8×1km (S8) → 4×1km (S9) — lui 4:15–4:25/km · elle 5:20–5:30/km — récup 90s jogging</td>
+            <td>50 – 60 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Mercredi</span></td>
+            <td><span class="st st-h">Hyrox A</span></td>
+            <td>Endurance musculaire — circuits plus longs, charges progressives</td>
+            <td>60 – 75 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Jeudi</span></td>
+            <td><span class="st st-r">Course B</span></td>
+            <td>Tempo progressif : 10min facile + 20min tempo (lui 4:40/km · elle 5:45/km) + 10min facile</td>
+            <td>45 – 55 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Vendredi</span></td>
+            <td><span class="st st-rest">Repos</span></td>
+            <td>Repos complet</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="day">Samedi</span></td>
+            <td><span class="st st-brick">Brick</span></td>
+            <td>Course longue 60-70min + directement Hyrox 3-4 stations</td>
+            <td>90 – 100 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Dimanche</span></td>
+            <td><span class="st st-h">Hyrox B</span></td>
+            <td>Force + puissance — charges lourdes, basses répétitions</td>
+            <td>55 – 65 min</td>
+          </tr>
+        </table>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Détail des Séances Hyrox — Phase 2</h4>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-h">🏋️</div>
+            <div><h4>Hyrox A — Endurance Musculaire</h4><div class="smeta">Mercredi · 60-75 min · Enchaîner les stations, tenir la technique sous fatigue</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Échauffement (10 min)</h5>
+              <ul>
+                <li>500m rameur Z1 + mobilité dynamique</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>AMRAP 25 min — Circuit Hyrox (noter le nombre de tours)</h5>
+              <ul>
+                <li>SkiErg 250m</li>
+                <li>Rameur 250m</li>
+                <li>12 Wall Balls</li>
+                <li>Farmers Carry 40m (2×20 kg F / 2×24 kg H)</li>
+                <li>10 Burpee Broad Jumps (ou 20m)</li>
+                <li>Sandbag Lunges 30m (12 kg F / 16 kg H)</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Gainage & Core (10 min)</h5>
+              <ul>
+                <li>3 × 45s planche frontale + 30s planche latérale chaque côté</li>
+                <li>3 × 12 Dead Bug</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-b">🔥</div>
+            <div><h4>Brick Session — Course + Hyrox (Samedi)</h4><div class="smeta">Samedi · 90-100 min · Simuler la fatigue de course avant les stations</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Partie 1 : Course (60-70 min)</h5>
+              <ul>
+                <li>Courir ensemble à allure confortable : 5:50–6:15/km (lui récup · elle Z2–Z3 effort)</li>
+                <li>Les 10 dernières minutes : monter (lui ~4:40/km · elle ~5:45/km) pour arriver avec de la fatigue</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Partie 2 : Stations Hyrox directement après (sans pause) — volume progressif</h5>
+              <ul>
+                <li><strong>Base (S5–S6) :</strong> SkiErg 300m + RowErg 300m + Farmers Carry 60m + 20 Wall Balls (4 stations)</li>
+                <li><strong>Progression (S7) :</strong> Ajouter Sandbag Lunges 50m + 15 Burpee Broad Jumps (5 stations)</li>
+                <li><strong>Charge max (S8) :</strong> 6 stations + 2 × 1km run intercalés entre stations (format race amorcé)</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Objectif de la session</h5>
+              <p>Apprendre à activer les bras/haut du corps quand les jambes sont déjà fatiguées. C'est exactement ce qui se passe en course.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-h">🏋️</div>
+            <div><h4>Hyrox B — Force & Puissance</h4><div class="smeta">Dimanche · 55-65 min · Augmenter les charges progressivement</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Bloc Force (30 min) — Objectif : charges challenging</h5>
+              <ul>
+                <li>Back Squat ou Front Squat : 5 × 5 (charges lourdes)</li>
+                <li>Sled Push alternatif : Leg Press heavy 4 × 8 OR Farmer Squat</li>
+                <li>Pull-ups / Assisted Pull-ups : 4 × 8 (simule Sled Pull)</li>
+                <li>KB Swing : 3 × 15 (chaîne postérieure + explosivité)</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Finisher Hyrox (15 min)</h5>
+              <ul>
+                <li>4 rounds : 200m SkiErg + 10 Wall Balls + 20m Farmers Carry</li>
+                <li>Repos 90s entre rounds</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin:1.5rem 0 0.75rem;">Semaine par Semaine — Phase 2</h4>
+        <div class="grid-2" style="margin-bottom:1.25rem;">
+
+          <div class="card" style="border-top:3px solid var(--green);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:0.25rem;">Semaine 5 · 15–21 Juin</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Introduction Brick</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges 70% · 4 × 1km mardi · Brick 4 stations samedi</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 4 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (récup 90s jogging)</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>AMRAP 20 min — circuit 6 mouvements, charges 70%</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>10 min facile + 15 min tempo (lui 4:40/km · elle 5:45/km) + 10 min facile</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Brick</span></td><td>Course 60 min ensemble à 5:50–6:10/km → SkiErg 300m + Row 300m + Carry 60m + 20 WB</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Back Squat 5×5 + Pull-ups 4×8 + finisher 3 rounds</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--green);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:0.25rem;">Semaine 6 · 22–28 Juin</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Montée de Volume</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges 72% · 5 × 1km mardi · Brick 5 stations samedi</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 5 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (récup 90s jogging)</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>AMRAP 22 min, charges 72%</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>10 min facile + 20 min tempo (lui 4:40/km · elle 5:45/km) + 10 min facile</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Brick</span></td><td>Course 60 min ensemble à 5:50–6:10/km → 5 stations (+ Sandbag Lunges 50m)</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Charges +2–3%, KB Swing 3×15, finisher 4 rounds</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--green);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:0.25rem;">Semaine 7 · 29 Juin – 5 Juil</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Première Charge Significative</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges 75% · 6 × 1km mardi · Brick 5 stations + 1km run intercalé</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 6 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (récup 90s jogging)</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>AMRAP 25 min, charges 75%</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>10 min facile + 20 min tempo (lui 4:40/km · elle 5:45/km) + 10 min facile</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Brick</span></td><td>Course 65 min ensemble à 5:50–6:05/km → 5 stations + 1km run intercalé</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Charges lourdes, 5 séries, finisher 4 rounds</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--green);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:0.25rem;">Semaine 8 · 6–12 Juil</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Pic de Charge Phase 2</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Charges 77–80% · 8 × 1km mardi · Brick 6 stations + 2 runs — semaine la plus dure de Phase 2</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 8 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (récup 90s) — séance la plus longue</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>AMRAP 25 min, charges proches poids race</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 40 min — lui 5:10–5:30/km · elle 6:20–6:45/km (ne pas forcer après le mardi)</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Brick</span></td><td>Course 70 min ensemble à 5:50–6:05/km → 6 stations + 2 × 1km run intercalés</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Séance complète, toutes les charges lourdes</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--green); background:#f0fdf4; grid-column: 1 / -1;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:0.25rem;">Semaine 9 · 13–19 Juil · Décharge</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Récupération Active — Volume –20%</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Corps frais pour Phase 3 · Maintenir l'intensité sur courtes distances · Ne pas compenser</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 4 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (récup 2 min) — volume réduit</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>AMRAP 18 min allégé, charges normales — ni plus, ni plus longtemps</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing facile 35 min — lui 5:15–5:30/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Brick</span></td><td>Course légère 50 min ensemble à 5:55–6:15/km → 3 stations techniques</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Force légère + mobilité, 2 tours finisher seulement</td></tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="tip">
+          <strong>📈 Résumé Progression Phase 2</strong>
+          <ul>
+            <li>S5–S6 : Introduction brick (course + station). Charges 70–72%. 4–5 × 1km le mardi.</li>
+            <li>S7 : Brick avec run intercalé entre stations. 6 × 1km mardi. Charges 75%.</li>
+            <li>S8 : Pic de charge — 8 × 1km + brick 6 stations. Semaine la plus difficile de la phase.</li>
+            <li>S9 : Décharge — volume –20%, intensité maintenue. Corps frais pour Phase 3.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 3 -->
+<section id="phase3">
+  <div class="container">
+    <div class="section-title"><div class="chip">8</div>Phase 3 — Spécificité</div>
+    <p class="section-sub">Semaines 10 – 15 · 20 Juillet – 30 Août</p>
+
+    <div class="phase-section">
+      <div class="phase-hd" style="background: linear-gradient(135deg, #92400e, #FF6B35);">
+        <div>
+          <div class="phase-label">Phase 3 / 4</div>
+          <h2>Spécificité</h2>
+          <div class="phase-meta">6 semaines · 20 Juillet – 30 Août · Volume élevé / Simulations Hyrox</div>
+        </div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-goals">
+          <span class="goal-chip">🎯 Simuler les conditions de course</span>
+          <span class="goal-chip">🎯 Optimiser la stratégie duo</span>
+          <span class="goal-chip">🎯 Tenir le rythme 8 stations</span>
+          <span class="goal-chip">🎯 Travailler les transitions</span>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Structure Hebdomadaire Type</h4>
+        <table class="wtable" style="margin-bottom:1.25rem;">
+          <tr><th>Jour</th><th>Type</th><th>Contenu</th><th>Durée</th></tr>
+          <tr>
+            <td><span class="day">Lundi</span></td>
+            <td><span class="st st-rest">Repos</span></td>
+            <td>Repos complet · <span style="color:#3730a3;font-style:italic;">Optionnel : séance mobilité/étirements 30 min</span></td>
+            <td>— / ~30 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Mardi</span></td>
+            <td><span class="st st-r">Course A</span></td>
+            <td>Séance qualitative : 8 × 1km — lui 4:10–4:25/km · elle 5:15–5:30/km (récup 1:30 jogging)</td>
+            <td>55 – 70 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Mercredi</span></td>
+            <td><span class="st st-h">Hyrox A</span></td>
+            <td>Simulation partielle : 4 stations + 4 × 1km run intercalés</td>
+            <td>60 – 75 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Jeudi</span></td>
+            <td><span class="st st-r">Course B</span></td>
+            <td>Footing récup actif 40 min — lui 5:10–5:25/km · elle 6:20–6:45/km</td>
+            <td>40 – 45 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Vendredi</span></td>
+            <td><span class="st st-rest">Repos</span></td>
+            <td>Repos complet — préparation mentale pour le samedi</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="day">Samedi</span></td>
+            <td><span class="st st-brick">Simu Hyrox</span></td>
+            <td><strong>Simulation complète : format Hyrox Doubles</strong> (8 runs + 8 stations)</td>
+            <td>90 – 120 min</td>
+          </tr>
+          <tr>
+            <td><span class="day">Dimanche</span></td>
+            <td><span class="st st-rest">Récup</span></td>
+            <td>Récupération active, étirements, bilan de la simulation</td>
+            <td>30 min</td>
+          </tr>
+        </table>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Séance Phare — Simulation Hyrox Complète</h4>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-b">🏁</div>
+            <div><h4>Simulation Hyrox Doubles — Format Race</h4><div class="smeta">Samedi · 90-120 min · La séance la plus importante de la préparation</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Format exact de la simulation</h5>
+              <p>Reproduire fidèlement la race : <strong>1km course → Station → 1km course → Station → ... (× 8)</strong>. Chaque station = volume doublé de votre part individuelle (puisque vous vous entraînez souvent seuls). En duo le jour J, vous ferez moitié moins par personne.</p>
+            </div>
+            <div class="s-block">
+              <h5>Simulation Individuelle (entraînement solo)</h5>
+              <ul>
+                <li>1km @ 5:45/km → SkiErg 500m → 1km → Sled Push alternatif 50m</li>
+                <li>1km → Sled Pull 50m → 1km → Burpee Broad Jumps 40m</li>
+                <li>1km → RowErg 500m → 1km → Farmers Carry 100m</li>
+                <li>1km → Sandbag Lunges 100m → 1km → Wall Balls 50 reps</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Simulation Duo (faire ensemble quand possible)</h5>
+              <ul>
+                <li>Courir les 1km <strong>ensemble</strong> à l'allure de course cible (5:45-6:00/km)</li>
+                <li>Aux stations, <strong>partager le volume</strong> : un commence, l'autre prend le relais</li>
+                <li>Chronomètrer chaque section pour analyser après</li>
+                <li>Simuler les transitions — pas de pause entre course et station</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Calendrier des simulations — Phase 3</h5>
+              <ul>
+                <li><strong>S10 :</strong> Simulation 4 stations (moitié) — prise de repères</li>
+                <li><strong>S11-12 :</strong> Simulation 6 stations — tester l'endurance</li>
+                <li><strong>S13 :</strong> Simulation complète 8 stations — chrono à noter</li>
+                <li><strong>S14 :</strong> Simulation complète avec ajustements stratégiques</li>
+                <li><strong>S15 :</strong> Simulation réduite (70%) + travail transitions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="session">
+          <div class="s-header">
+            <div class="s-icon si-h">🏋️</div>
+            <div><h4>Hyrox A — Simulation Partielle (Mercredi)</h4><div class="smeta">60-75 min · Format race en mini-version</div></div>
+          </div>
+          <div class="s-body">
+            <div class="s-block">
+              <h5>Format alterné Course/Station</h5>
+              <ul>
+                <li>1km @ 5:45–6:00/km ensemble → SkiErg 400m → repos 90s</li>
+                <li>1km @ 5:45–6:00/km ensemble → RowErg 400m → repos 90s</li>
+                <li>1km @ 5:45–6:00/km ensemble → Wall Balls 40 reps → repos 90s</li>
+                <li>1km @ 5:45–6:00/km ensemble → Farmers Carry 80m + Sandbag Lunges 60m</li>
+              </ul>
+            </div>
+            <div class="s-block">
+              <h5>Objectif</h5>
+              <p>S'habituer à enchaîner course → station sans temps de transition. Apprendre à gérer sa respiration à l'entrée des stations.</p>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin:1.5rem 0 0.75rem;">Semaine par Semaine — Phase 3</h4>
+        <div class="grid-2" style="margin-bottom:1.25rem;">
+
+          <div class="card" style="border-top:3px solid var(--orange);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:0.25rem;">Semaine 10 · 20–26 Juil</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Entrée en Spécificité</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Poids race introduits · Simulation 4 stations · Prise de repères chronométrés</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 6 × 1km — lui 4:15–4:20/km · elle 5:15–5:25/km (récup 90s jogging)</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simu partielle : 4 × (1km + 1 station) — SkiErg, RowErg, Carry, Wall Balls</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 40 min — lui 5:10–5:25/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td>Simulation 4 stations (poids race) + 4 × 1km à 5:45–6:00/km ensemble — chrono par section</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Récup</span></td><td>Récup active 30 min + bilan chrono S10</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--orange);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:0.25rem;">Semaine 11 · 27 Juil – 2 Août</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Extension à 6 Stations</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">6 stations · Endurance spécifique · Identifier les stations les plus coûteuses</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 8 × 1km — lui 4:10–4:20/km · elle 5:15–5:25/km (récup 90s jogging)</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simu partielle : 4 × (1km + 1 station) — rotation sur les 8 stations</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 40 min — lui 5:10–5:25/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td>Simulation 6 stations + 6 × 1km à 5:45–6:00/km ensemble — noter chaque temps de station</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Récup</span></td><td>Récup active 30 min + analyse des stations chronophages</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--orange);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:0.25rem;">Semaine 12 · 3–9 Août</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Ciblage Stations Faibles</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Retravailler les 2 stations identifiées en S11 · Transitions chronométrées</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 8 × 1km — lui 4:10–4:20/km · elle 5:15–5:25/km — viser régularité absolue</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simu partielle : focus ciblé sur les 2 stations faibles de S11 (volume ×1,5)</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 40 min — lui 5:10–5:25/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td>Simulation 6 stations + transitions à 5:45–6:00/km ensemble — comparer chrono S11</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Récup</span></td><td>Récup active 30 min</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--orange); border:2px solid var(--orange);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:0.25rem;">Semaine 13 · 10–16 Août · 🎯 SIMULATION COMPLÈTE</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Première Simulation 8 Stations</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">8 stations + 8 × 1km · Premier chrono de référence complet · Économiser du mardi au vendredi</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles légers : 5 × 1km — lui 4:25/km · elle 5:35/km — économiser pour samedi</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simu partielle activation : 4 × (1km + 1 station), allure détendue</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing léger 35 min — lui 5:20–5:40/km · elle 6:30–6:50/km — jambes fraîches pour samedi</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td><strong>SIMULATION COMPLÈTE</strong> : 8 × 1km à 5:45–6:00/km ensemble + 8 stations poids race — chrono total + section par section</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Récup</span></td><td>Récup active 30 min + bilan détaillé (ce qui fonctionne / à ajuster)</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--orange);">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:0.25rem;">Semaine 14 · 17–23 Août</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Optimisation & Stratégie Duo</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Affiner la stratégie duo · Ajuster la répartition des stations selon S13</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 6 × 1km — lui 4:10–4:20/km · elle 5:15–5:25/km — régularité absolue</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simu partielle : retravail stations faibles S13 + pratique transitions duo</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 40 min — lui 5:10–5:25/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td>Simulation complète à 5:45–6:00/km ensemble — tester nouvelle répartition duo si besoin</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Récup</span></td><td>Récup active 30 min + décision finale sur la stratégie du jour J</td></tr>
+            </table>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--orange); background:#fff7ed;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:0.25rem;">Semaine 15 · 24–30 Août · Décharge</div>
+            <h4 style="font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Repos Actif — Volume –30%</h4>
+            <p style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;">Corps frais pour Phase 4 · <strong>Dernière simulation avant la course</strong> · Réduite à 4 stations</p>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 4 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (récup 2 min) — volume réduit</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simu partielle réduite : 4 × (1km + 1 station), allure détendue</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing facile 35 min — lui 5:15–5:30/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td>Simulation 4 stations (70% effort) à 5:45–6:00/km ensemble + travail transitions — <strong>dernière vraie simu</strong></td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Récup</span></td><td>Récup active + mobilité 30 min</td></tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="success"><p><strong>Indicateur de réussite Phase 3 :</strong> Compléter la simulation complète (S13 ou S14) sans avoir à s'arrêter, avec des splits réguliers sur les 1km. Le chrono total individuel sera ~40% plus court en duo le jour J grâce au partage du travail.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 4 -->
+<section id="phase4">
+  <div class="container">
+    <div class="section-title"><div class="chip">9</div>Phase 4 — Affûtage & Taper</div>
+    <p class="section-sub">Semaines 16 – 19 · 31 Août – 27 Septembre</p>
+
+    <div class="phase-section">
+      <div class="phase-hd" style="background: linear-gradient(135deg, #4c1d95, #8b5cf6);">
+        <div>
+          <div class="phase-label">Phase 4 / 4</div>
+          <h2>Affûtage & Taper</h2>
+          <div class="phase-meta">4 semaines · 31 Août – 27 Sep · Volume décroissant / Intensité maintenue</div>
+        </div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-goals">
+          <span class="goal-chip">🎯 Arriver frais le jour J</span>
+          <span class="goal-chip">🎯 Maintenir le niveau sans accumuler la fatigue</span>
+          <span class="goal-chip">🎯 Finaliser la stratégie duo</span>
+          <span class="goal-chip">🎯 Confiance mentale</span>
+        </div>
+
+        <h4 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;">Structure sur les 4 Semaines</h4>
+
+        <div class="grid-2" style="margin-bottom:1.25rem;">
+          <div>
+            <h5 style="font-size:0.85rem;font-weight:700;color:var(--purple);margin-bottom:0.5rem;">S16 — Affûtage 1 (31 Août – 6 Sep)</h5>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 6 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km (↓ volume vs Phase 3)</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Simulation 6 stations, charges normales</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing récup 40 min — lui 5:10–5:25/km · elle 6:20–6:45/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Simu Hyrox</span></td><td>Simulation 4 stations + 4 × 1km à 5:45–6:00/km ensemble</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-h">Hyrox B</span></td><td>Force légère + technique</td></tr>
+            </table>
+          </div>
+          <div>
+            <h5 style="font-size:0.85rem;font-weight:700;color:var(--purple);margin-bottom:0.5rem;">S17 — Affûtage 2 (7 – 13 Sep)</h5>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Intervalles : 4 × 1km — lui 4:15–4:25/km · elle 5:20–5:30/km + 20 min footing facile</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Technique + activation, volume –40%</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing facile 35 min — lui 5:10–5:25/km · elle 6:20–6:40/km</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Brick</span></td><td>Course 50 min ensemble à 5:50–6:10/km + quelques stations</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Repos</span></td><td>Repos actif ou mobilité</td></tr>
+            </table>
+          </div>
+          <div>
+            <h5 style="font-size:0.85rem;font-weight:700;color:var(--purple);margin-bottom:0.5rem;">S18 — Taper (14 – 20 Sep)</h5>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-mob">Mobilité*</span></td><td><em>Facultatif — Étirements statiques, mobilité hanches/épaules/chevilles, rouleau de massage : ~30 min</em></td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Léger : 3 × 1km — lui 4:30/km · elle 5:40/km + footing 20 min facile</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Activation : 3 stations × 2 min, charges légères</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-r">Course B</span></td><td>Footing très léger 30 min — lui 5:30–5:50/km · elle 6:30–7:00/km, aucune intensité</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-r">Course C</span></td><td>Sortie courte ensemble 30 min à 6:00–6:15/km + 15 min étirements</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-rest">Repos</span></td><td>Repos complet</td></tr>
+            </table>
+          </div>
+          <div>
+            <h5 style="font-size:0.85rem;font-weight:700;color:#ef4444;margin-bottom:0.5rem;">S19 — Race Week (21 – 27 Sep)</h5>
+            <table class="wtable">
+              <tr><th>Jour</th><th>Type</th><th>Contenu</th></tr>
+              <tr><td><span class="day">Lun</span></td><td><span class="st st-rest">Repos</span></td><td>Repos complet</td></tr>
+              <tr><td><span class="day">Mar</span></td><td><span class="st st-r">Course A</span></td><td>Jogging 20 min — lui 5:30–5:50/km · elle 6:30–6:50/km + 4 accélérations 100m</td></tr>
+              <tr><td><span class="day">Mer</span></td><td><span class="st st-h">Hyrox A</span></td><td>Activation : 2 tours légers × 3 stations (5 min total)</td></tr>
+              <tr><td><span class="day">Jeu</span></td><td><span class="st st-rest">Repos</span></td><td>Repos — préparation équipement, nutrition</td></tr>
+              <tr><td><span class="day">Ven</span></td><td><span class="st st-rest">Repos</span></td><td>Repos — voyage / déplacement si nécessaire</td></tr>
+              <tr><td><span class="day">Sam</span></td><td><span class="st st-brick">Race/Activ.</span></td><td>Selon heure de départ : activation matinale OU RACE</td></tr>
+              <tr><td><span class="day">Dim</span></td><td><span class="st st-brick">🏁 RACE</span></td><td>RACE DAY — 5:45–6:00/km ensemble · Tout donner !</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="tip">
+          <strong>⚠️ Règle d'or du Taper : ne pas paniquer !</strong>
+          <p>Il est normal de ressentir des jambes lourdes, de l'irritabilité, l'impression de "perdre la forme" pendant la phase de taper. C'est exactement ce qu'il doit se passer — le corps se régénère. Résister à l'envie de s'entraîner plus.</p>
+        </div>
+        <div class="info"><p><strong>Dernière simulation :</strong> La toute dernière vraie simulation doit être faite au plus tard en S15. Après, plus de séance intense proche de la course — on arrive frais.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STRATEGIE DUO -->
+<section id="strategie">
+  <div class="container">
+    <div class="section-title"><div class="chip">10</div>Stratégie Duo — Race Day</div>
+    <p class="section-sub">Maximiser votre performance en binôme le jour J</p>
+
+    <div class="duo-grid" style="margin-bottom:1rem;">
+      <div class="duo-card">
+        <h4>🏃 La Course (1km × 8)</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Courez <strong>toujours ensemble</strong> — ne vous séparez pas</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Elle donne l'allure — pas de pression sur lui</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Allure cible : 5:45 – 6:00 min/km (stable)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Ne pas partir trop vite sur les premiers 1km — adrénaline = pièges</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Les 2 derniers 1km : lâcher si l'énergie est là</li>
+        </ul>
+      </div>
+      <div class="duo-card">
+        <h4>🏋️ Les Stations</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Décider avant la course <strong>qui commence chaque station</strong></li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Pendant que l'un travaille, l'autre récupère — profiter pleinement</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Ne jamais se précipiter — régularité > explosivité</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Communication : "go" pour le passage de relais</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Sur les Wall Balls, lui commence (stations finales = dures pour elle)</li>
+        </ul>
+      </div>
+      <div class="duo-card">
+        <h4>⚡ Répartition Suggérée par Station</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span><strong>SkiErg :</strong> elle commence (épaules fraîches)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span><strong>Sled Push :</strong> lui commence (il est plus fort en poussée)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span><strong>Sled Pull :</strong> elle commence (bonne chaîne post CrossFit)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span><strong>Burpees :</strong> lui commence (il récupère mieux)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span><strong>RowErg :</strong> elle commence (bonne technique CrossFit)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span><strong>Wall Balls (finisher) :</strong> lui commence — ça aide moralement !</li>
+        </ul>
+      </div>
+      <div class="duo-card">
+        <h4>💬 Communication & Mental</h4>
+        <ul style="list-style:none;">
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Établir un mot de code si l'un veut ralentir</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>S'encourager verbalement aux stations (ça fait vraiment la différence)</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Ne jamais critiquer pendant la course — débrief après</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Station 7 et 8 = moment critique — mantras préparés à l'avance</li>
+          <li style="font-size:0.82rem;padding:0.2rem 0 0.2rem 1.1rem;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">▸</span>Profiter ! Regarder la foule, sourire — c'est aussi une fête sportive</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="success"><p><strong>Rappel format :</strong> En Hyrox Doubles, les 1km se font TOUJOURS ensemble. Aux stations, l'un travaille pendant que l'autre souffle. C'est ce partage qui rend le format duo moins éprouvant physiquement qu'un solo — mais il faut pratiquer la communication et les transitions à l'entraînement.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NUTRITION -->
+<section id="nutrition">
+  <div class="container">
+    <div class="section-title"><div class="chip">11</div>Nutrition & Récupération</div>
+    <p class="section-sub">Les bases pour soutenir 19 semaines d'entraînement et performer le jour J</p>
+
+    <div class="grid-3" style="margin-bottom:1rem;">
+      <div class="nut-card">
+        <h4>🥗 Quotidien</h4>
+        <ul>
+          <li>Protéines : 1.6-2g/kg de poids corporel/jour</li>
+          <li>Glucides : adapter selon l'intensité de la séance</li>
+          <li>Lipides : ne pas les supprimer (hormones, récup)</li>
+          <li>Hydratation : 35ml/kg minimum + compensation sueur</li>
+          <li>Légumes : 3-5 portions par jour (micronutriments)</li>
+          <li>Limiter alcool et aliments ultra-transformés</li>
+        </ul>
+      </div>
+      <div class="nut-card">
+        <h4>⚡ Avant les Séances</h4>
+        <ul>
+          <li>2-3h avant : repas complet (glucides + protéines)</li>
+          <li>30-60 min avant : fruit + café si habitude</li>
+          <li>Pas d'expérimentation alimentaire les jours importants</li>
+          <li>Séances le matin à jeun : ok pour les footings Z1/Z2</li>
+          <li>Hyrox A/B ou simulations : toujours manger avant</li>
+        </ul>
+      </div>
+      <div class="nut-card">
+        <h4>🔋 Après les Séances</h4>
+        <ul>
+          <li>Dans les 30 min : 20-30g de protéines + glucides rapides</li>
+          <li>Repas complet dans les 2h</li>
+          <li>Électrolytes si séance > 60 min et forte transpiration</li>
+          <li>Smoothie : banane + lait ou yaourt + whey = idéal</li>
+          <li>Pas de grosse séance le lendemain si mal récupéré</li>
+        </ul>
+      </div>
+      <div class="nut-card">
+        <h4>🏁 Veille & Jour de Course</h4>
+        <ul>
+          <li><strong>Veille :</strong> repas riche en glucides (pâtes, riz), bien dormir</li>
+          <li><strong>Matin J :</strong> repas 2-3h avant (flocons d'avoine, pain, banane)</li>
+          <li><strong>Pendant :</strong> gels énergétiques si course > 1h30</li>
+          <li><strong>Pendant :</strong> eau aux ravitaillements</li>
+          <li>Éviter tout aliment nouveau le jour J</li>
+        </ul>
+      </div>
+      <div class="nut-card">
+        <h4>😴 Récupération</h4>
+        <ul>
+          <li>Sommeil : priorité absolue — 7-9h par nuit</li>
+          <li>Rouleau de massage / bain froid après séances dures</li>
+          <li>Séances de mobilité le lundi (jour de repos)</li>
+          <li>Écouter les signaux de fatigue excessive (surmenage)</li>
+          <li>Jours de repos = obligatoires, pas optionnels</li>
+          <li>Si douleur persistante : consultation, pas d'auto-traitement</li>
+        </ul>
+      </div>
+      <div class="nut-card">
+        <h4>💊 Compléments (facultatif)</h4>
+        <ul>
+          <li><strong>Whey protéine</strong> si apport insuffisant via alimentation</li>
+          <li><strong>Créatine</strong> : 3-5g/jour (aide force + récup)</li>
+          <li><strong>Vitamine D</strong> : si manque d'exposition solaire</li>
+          <li><strong>Magnésium</strong> : si crampes fréquentes</li>
+          <li><strong>Caféine</strong> : 3-6mg/kg, 45 min avant la course</li>
+          <li>Pas de miracle — la base primer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SEMAINE DE COURSE -->
+<section id="race">
+  <div class="container">
+    <div class="section-title"><div class="chip">12</div>Semaine de Course & Race Day</div>
+    <p class="section-sub">Les derniers détails pour arriver dans les meilleures conditions</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color:var(--navy);font-weight:700;margin-bottom:1rem;">📦 Checklist Équipement</h3>
+        <ul style="list-style:none;">
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>Chaussures de course rodées (pas de nouvelles !)</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>Tenue légère + gants de travail (Sled Pull / Farmers)</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>Ceinture de course pour gels/téléphone</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>Montre GPS (allure en temps réel)</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>2-3 gels énergétiques chacun</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>Dossards reçus à l'avance</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;border-bottom:1px solid var(--gray-light);"><span style="position:absolute;left:0;">☐</span>Tape / bandages si tendances aux ampoules</li>
+          <li style="font-size:0.85rem;padding:0.25rem 0 0.25rem 1.2rem;position:relative;"><span style="position:absolute;left:0;">☐</span>Anti-frottements (Vaseline / Body Glide)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--navy);font-weight:700;margin-bottom:1rem;">⏱️ Timing Race Day</h3>
+        <ul style="list-style:none;">
+          <li style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--gray-light);"><strong style="color:var(--orange);">J-1 soir :</strong> Repas chargé en glucides, coucher tôt</li>
+          <li style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--gray-light);"><strong style="color:var(--orange);">H-3 :</strong> Petit déjeuner solide (avoine, pain, fruits)</li>
+          <li style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--gray-light);"><strong style="color:var(--orange);">H-1.5 :</strong> Arrivée sur site, récupération dossards, repérage</li>
+          <li style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--gray-light);"><strong style="color:var(--orange);">H-45min :</strong> Café + banane si besoin</li>
+          <li style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--gray-light);"><strong style="color:var(--orange);">H-20min :</strong> Échauffement léger + quelques mouvements Hyrox</li>
+          <li style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--gray-light);"><strong style="color:var(--orange);">H-5min :</strong> Dernier rappel de la stratégie, se sourire !</li>
+          <li style="font-size:0.85rem;padding:0.3rem 0;"><strong style="color:var(--orange);">DÉPART :</strong> Allure conservative les 2 premiers 1km</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:1rem;">
+      <strong>🎯 Le vrai objectif du jour J</strong>
+      <p>Vous avez mis 19 semaines de travail. Le jour de la course, la préparation est faite — profitez. La performance vient de l'entraînement, pas des 24 dernières heures. Mangez bien, dormez bien, et lancez-vous ensemble avec le sourire. Un Hyrox duo, c'est avant tout une aventure partagée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-size:1.2rem;font-weight:900;color:var(--orange);letter-spacing:3px;margin-bottom:0.5rem;">HYROX DUO 2026</div>
+  <p>Plan personnalisé · 19 semaines · 18 Mai – 27 Septembre · Objectif 1h25-1h35</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">Adapter le plan selon les sensations. En cas de douleur, consulter un professionnel de santé avant de reprendre.</p>
+</footer>
+
+</body>
+</html>
